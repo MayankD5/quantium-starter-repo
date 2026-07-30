@@ -1,10 +1,16 @@
+import sys
+import os
 import pytest
-from dash.testing.application_runners import import_app
+
+# Add project root to Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from app import app
 
 
 @pytest.fixture
 def dash_app():
-    return import_app("app")
+    return app
 
 
 def test_header_present(dash_duo, dash_app):
